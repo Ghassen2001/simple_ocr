@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OCR Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+        .result-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background: #f8f8f8;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Image OCR Extractor</h2>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Select image:</label><br><br>
+        <input type="file" name="image" accept="image/*" required><br><br>
+  
+
+        <button type="submit">Extract Text</button>
+    </form>
+
+    {% if text %}
+    <h3>Extracted Text:</h3>
+    <div class="result-box">
+        {{ text }}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
